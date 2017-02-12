@@ -1,23 +1,22 @@
 <template>
     <div id="app">
-        <img src="./assets/logo.png">
-        <router-view></router-view>
+        <navigation />
+        <router-view />
+        <basement />
     </div>
 </template>
 
 <script>
+import Navigation from './components/Navigation'
+import Basement from './components/Basement'
+
 export default {
-    name: 'app'
+    name: 'app',
+    components: { Navigation, Basement }
 }
 </script>
 
 <style lang="scss">
-// @import "~bourbon/app/assets/stylesheets/bourbon";
-// @import "~bourbon-neat/app/assets/stylesheets/neat";
-/* http://meyerweb.com/eric/tools/css/reset/
-v2.0 | 20110126
-License: none (public domain)
-*/
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -46,6 +45,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
     line-height: 1;
+    background: #ebeff2;
 }
 ol, ul {
     list-style: none;
@@ -61,5 +61,10 @@ q:before, q:after {
 table {
     border-collapse: collapse;
     border-spacing: 0;
+}
+
+html {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 10px;
 }
 </style>
