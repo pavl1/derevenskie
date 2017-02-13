@@ -8,6 +8,7 @@ import Farmer from 'components/Farmer'
 import Investor from 'components/Investor'
 import Company from 'components/Company'
 import Contacts from 'components/Contacts'
+import Client from 'components/Client'
 
 export default new Router({
   routes: [
@@ -31,6 +32,10 @@ export default new Router({
       path: '/contacts',
       name: 'Contacts',
       component: Contacts
+    }, {
+      path: '/client',
+      name: 'Client',
+      component: Client
     }
   ]
 })

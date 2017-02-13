@@ -1,0 +1,22 @@
+main {
+    @include outer-container();
+    background-color: #fff;
+    padding: 1rem 3rem;
+}
+
+h1 {
+    font-size: 1.75rem;
+    margin: 2rem 0 1rem;
+    text-transform: uppercase;
+}
+p {
+    margin: 0 0 1rem;
+    font-size: 1.4rem;
+    line-height: 1.42857143;
+    text-align: justify;
+}
+a {
+    color: scale-color($blue, $lightness: 20%);
+}
+
+.header-filler { height: $navigation-height }

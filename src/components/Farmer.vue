@@ -1,6 +1,6 @@
 <template>
     <section>
-        <header></header>
+        <header class="header-filler"></header>
         <main>
             <h1>Фермеру</h1>
                 <p>Сельское хозяйство становится популярной и доходной отраслью, привлекая всё больший интерес инвесторов и потребителей. Приобретение и потребление натуральных продуктов, выращенных с любовью и заботой, становится всё более востребованным в наше время. Нарушенная экология и применение запрещённых усилителей роста и других опасных ядохимикатов на больших коммерческих угодьях делают наше питание небезопасным, а настоящие деревенские продукты – это редкие гости на столе городского населения.
@@ -13,20 +13,5 @@
 <script>
     export default {}
 </script>
-<style lang="scss" scoped>
-    @import "~bourbon-neat/app/assets/stylesheets/neat";
-
-    main {
-        @include outer-container();
-        background-color: #fff;
-    }
-
-    h1 {
-        font-size: 1.75rem;
-        text-transform: uppercase;
-    }
-    p {
-        text-align: justify;
-    }
-
+<style>
 </style>

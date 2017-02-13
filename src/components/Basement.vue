@@ -1,15 +1,15 @@
 <template lang="html">
-    <section>
+    <footer>
         <div>
             Деревенские продукты © 2013-2017 ООО "Источник и ресурсы" (Source&Resources LLC.)
         </div>
-	</section>
+	</footer>
 </template>
 
 <style lang="scss" scoped>
     @import "~bourbon-neat/app/assets/stylesheets/neat";
 
-    section {
+    footer {
         background: #282f33;
 		color: #fff;
         padding: 2rem 0;

@@ -1,22 +1,22 @@
 <template lang="html">
     <header>
-        <div>
-            <li v-for="item in items" :class="item.icon">
-                <router-link :to="item.href" :target="item.target">
-                    <icon :name="item.icon" />
-                    {{ item.name }}
-                </router-link>
+            <transition-group name="menu-item">
+                <li v-for="(item, index) in items" :class="item.icon" :key="item">
+                    <router-link :to="item.href" :target="item.target" active-class="active" exact @click.native="move(index)">
+                        <icon :name="item.icon" />
+                        {{ item.name }}
+                    </router-link>
 
-                <ul v-if="item.sub">
-                    <li v-for="subitem in item.sub">
-                        <router-link :to="subitem.href" :target="subitem.target">
-                            <icon :name="subitem.icon" />
-                            {{ subitem.name }}
-                        </router-link>
-                    </li>
-                </ul>
-            </li>
-        </div>
+                    <ul v-if="item.sub">
+                        <li v-for="subitem in item.sub">
+                            <router-link :to="subitem.href" :target="subitem.target">
+                                <icon :name="subitem.icon" />
+                                {{ subitem.name }}
+                            </router-link>
+                        </li>
+                    </ul>
+                </li>
+            </transition-group>
     </header>
 </template>
 
@@ -32,7 +32,7 @@
         display: block;
         &:before, &:after { display: none }
     }
-    div {
+    span {
         @include outer-container();
         position: relative;
         height: $navigation-height;
@@ -49,28 +49,28 @@
 
         &.logo {
             color: $black;
-            &:hover { border-color: $black }
+            &:hover a, .active { border-color: $black }
             ul { background-color: $black }
             i { margin-top: 1.75rem }
         }
         &.market {
             color: $blue;
-            &:hover { border-color: $blue }
+            &:hover a, .active { border-color: $blue }
             ul { background-color: $blue }
         }
         &.farmer {
             color: $green;
-            &:hover { border-color: $green }
+            &:hover a, .active { border-color: $green }
             ul { background-color: $green }
         }
         &.investor {
             color: $yellow;
-            &:hover { border-color: $yellow }
+            &:hover a, .active { border-color: $yellow }
             ul { background-color: $yellow }
         }
         &.company {
             color: $orange;
-            &:hover { border-color: $orange }
+            &:hover a, .active { border-color: $orange }
             ul { background-color: $orange }
             i {
                 background: url(../assets/company.png) 50% no-repeat;
@@ -79,10 +79,10 @@
         }
         &.contacts {
             color: $red;
-            &:hover { border-color: $red }
+            &:hover a, .active { border-color: $red }
             ul { background-color: $red }
         }
-        &:hover {
+        &:hover a, .active {
             transition: border-width 0.1s ease;
             border-top: 0.5rem solid;
             border-bottom: 0.5rem solid;
@@ -134,43 +134,63 @@
         }
         &:hover ul { transform: translateY(100%) }
     }
+
+    .menu-item-move {
+        transition: transform .5s
+    }
 </style>
 
 <script>
     import Icon from './Icon.vue'
 
     export default {
-        props: { current: String },
         components: { Icon },
+        methods: {
+            move(index) {
+                if (this.place) this.items[0].id = this.place
+                this.place = this.items[index].id
+                this.items[index].id = 0;
+                this.items.sort( (a, b) => {
+                    return a.id > b.id
+                })
+            }
+        },
         data() {
             return {
+                place: '',
                 items: [
                     {
+                        id: 1,
                         name: "Деревенские продукты",
                         href: "/",
                         target: "_self",
                         icon: "logo"
                     }, {
+                        id: 2,
                         name: "Магазин",
                         href: "http://market.derevenskie.pro",
                         target: "_blank",
                         icon: "market"
                     }, {
+                        id: 3,
                         name: "Фермеру",
-                        href: "/fermer",
+                        href: "/farmer",
                         target: "_self",
                         icon: "farmer"
                     }, {
+                        id: 4,
                         name: "Инвестору",
                         href: "/invest",
                         target: "_self",
                         icon: "investor"
                     }, {
+                        id: 6,
                         name: "Компания",
                         href: "/company",
                         target: "_self",
                         icon: "company"
                     }, {
+                        id: 7,
                         name: "Контакты",
                         href: "/contacts",
                         target: "_self",
@@ -178,7 +198,7 @@
                         sub: [
                             {
                                 name: "Клиентам",
-                                href: "/clients",
+                                href: "/client",
                                 target: "_self",
                                 icon: ""
                             }

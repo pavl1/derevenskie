@@ -1,36 +1,33 @@
 <template>
-  <div>
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://gitter.im/vuejs/vue" target="_blank">Gitter Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-      <br>
-      <li><a href="http://vuejs-templates.github.io/webpack/" target="_blank">Docs for This Template</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
-  </div>
+    <section>
+        <header class="header-filler"></header>
+        <main>
+            <h1>Контакты</h1>
+            <p>Индивидуальный предприниматель Глава крестьянского (фермерского) хозяйства Старостенко Анна Александровна</p>
+            <p>Фактический адрес: Российская Федерация, 665225, Иркутская область, Тулунский район, с. Икей, ул. Коммуны, д. 93.</p>
+            <p>Почтовый адрес: Российская Федерация, 664025, г. Иркутск, ул. Ленина, д. 6, почтовый ящик 19.</p>
+            <p>Адрес офиса: Российская Федерация, 664025, г. Иркутск, ул. Ленина, д. 6, офис 205.</p>
+            <p>Телефоны для покупателей: 8(3952)995-108, 8(914)8-995-108</p>
+            <p>Телефоны для фермеров: 8(3952)987-108, 8(914)8-987-108</p>
+            <p>Телефоны для инвесторов: 8(3952)686-108, 8(902)5-166-108</p>
+            <p>E-mail: <a href="mailto:anna@derevenskie.pro">anna@derevenskie.pro</a></p>
+            <h1>Реквизиты</h1>
+            <p>Наши крестьянско-фермерские хозяйства предлагают организациям и физическим лицам купить деревенские продукты как по наличному, так и по безналичному расчёту.</p>
+            <p>Наименование получателя: ИП ГКФХ Старостенко А.А.</p>
+            <p>ИНН: 381606714413</p>
+            <p>КПП: отсутствует</p>
+            <p>ОГРН: 316385000112936</p>
+            <p>Наименование банка получателя: Иркутский РФ АО «Россельхозбанк» ДО № 3349/66/15 в г. Иркутске</p>
+            <p>БИК: 042520700</p>
+            <p>Расчётный счёт: 40802810766150000326</p>
+            <p>Корреспондентский счёт: 30101810700000000700</p>
+        </main>
+    </section>
 </template>
 
 <script>
-export default {
-  name: 'Main',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
-  }
-}
+export default {}
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style>
 </style>
