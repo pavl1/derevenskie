@@ -67,6 +67,11 @@
 </template>
 
 <style lang="scss" scoped>
+    @import "~bourbon-neat/app/assets/stylesheets/neat";
+
+    .container {
+        @include outer-container();
+    }
     .slides {
         padding: 0;
         height: 420px;
@@ -74,6 +79,8 @@
         margin-bottom: 2rem;
         position: relative;
         background: #fff;
+        z-index: -1;
+        
     }
 
     .slides * {

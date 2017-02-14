@@ -1,16 +1,16 @@
 <template>
-    <section>
-        <header></header>
+    <div>
         <slider></slider>
+
         <main>
-			<article v-for="item in items" :class="item.name">
-				<div>
-					<center><icon :name="item.name" /></center>
-					<p>{{ item.description }}</p>
-				</div>
-			</article>
-		</main>
-    </section>
+            <article v-for="item in items" :class="item.name">
+                <div class="tile">
+                    <center><icon :name="item.name" /></center>
+                    <p>{{ item.description }}</p>
+                </div>
+            </article>
+        </main>
+    </div>
 </template>
 
 <script>
@@ -52,8 +52,7 @@
     @import "~bourbon-neat/app/assets/stylesheets/neat";
     @import "../assets/variables";
 
-    section { @include outer-container() }
-    header { height: $navigation-height }
+    div { @include outer-container() }
     main { display: flex; justify-content: space-between; flex-flow: row wrap}
     article {
         margin-bottom: 2rem; width: 30%; flex-grow: 1; margin-right: 2rem;
@@ -67,7 +66,8 @@
     .contacts { background: $red }
     .logo { background: $blue }
 
-    div { padding: 2rem 1rem; color: #fff }
+    .tile { padding: 2rem 1rem; color: #fff }
+    main { background: #fff }
 
 	p {
         font-weight: 300;

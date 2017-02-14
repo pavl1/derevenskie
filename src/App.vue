@@ -1,6 +1,6 @@
 <template>
-    <div id="app">
-        <navigation />
+    <div id="app" :class="fixed">
+        <navigation v-on:lock="lock" v-on:release="release" />
         <transition name="view" mode="out-in">
             <router-view />
         </transition>
@@ -14,7 +14,16 @@ import Basement from './components/Basement'
 
 export default {
     name: 'app',
-    components: { Navigation, Basement }
+    components: { Navigation, Basement },
+    data() {
+        return {
+            fixed: ''
+        }
+    },
+    methods: {
+        lock() { this.fixed = 'fixed' },
+        release() { this.fixed = '' }
+    }
 }
 </script>
 
@@ -23,6 +32,10 @@ export default {
     @import "./assets/variables";
     @import "./assets/reset";
     @import "./assets/scaffolding";
+
+    .fixed {
+        padding-top: $navigation-height;
+    }
 
     .view-enter-active, .view-leave-active {
         transition: opacity .2s ease, transform .2s ease

@@ -1,17 +1,17 @@
 <template lang="html">
-    <header>
+    <header :class="locked">
             <transition-group name="menu-item">
                 <li v-for="(item, index) in items" :class="item.icon" :key="item">
-                    <router-link :to="item.href" :target="item.target" active-class="active" exact @click.native="move(index)">
+                    <router-link :to="item.href" :target="item.target" :class="lockedText" active-class="active" exact @click.native="move(index)">
                         <icon :name="item.icon" />
-                        {{ item.name }}
+                        <p class="text">{{ item.name }}</p>
                     </router-link>
 
                     <ul v-if="item.sub">
                         <li v-for="subitem in item.sub">
                             <router-link :to="subitem.href" :target="subitem.target">
                                 <icon :name="subitem.icon" />
-                                {{ subitem.name }}
+                                <p>{{ subitem.name }}</p>
                             </router-link>
                         </li>
                     </ul>
@@ -26,11 +26,11 @@
     @import "../assets/variables";
 
     header {
-        position: fixed;
         width: 100%;
         height: $navigation-height;
         display: block;
         &:before, &:after { display: none }
+        top: 0;
     }
     span {
         @include outer-container();
@@ -42,6 +42,8 @@
         align-items: center;
         z-index: 999;
         &:before, &:after { display: none }
+
+
     }
     li {
         position: relative;
@@ -95,15 +97,24 @@
             background: #fff;
             width: 17rem;
             height: 17rem;
-            font-size: 1.75rem;
             text-align: center;
             text-decoration: none;
-            text-transform: uppercase;
-            font-weight: normal;
             position: relative;
             z-index: 999;
 
-            i { font-size: 4rem; margin-bottom: 1rem }
+            .text {
+                font-size: 1.75rem;
+                text-transform: uppercase;
+                font-weight: normal;
+                text-align: center;
+
+                .locked-text & { position: fixed; color: red }
+            }
+            .locked-text .text { background: black }
+
+            i { font-size: 4rem; margin-bottom: 1rem;
+                .locked-text & { display: none }
+            }
         }
 
         ul {
@@ -135,6 +146,17 @@
         &:hover ul { transform: translateY(100%) }
     }
 
+    .locked-text {
+
+    }
+
+    .locked {
+        position: fixed;
+
+        & a { height: 5rem }
+        & span { height: 5rem }
+    }
+
     .menu-item-move {
         transition: transform .5s
     }
@@ -145,6 +167,7 @@
 
     export default {
         components: { Icon },
+        mounted() { window.addEventListener('scroll', this.lockNavigation) },
         methods: {
             move(index) {
                 if (this.place) this.items[0].id = this.place
@@ -153,11 +176,30 @@
                 this.items.sort( (a, b) => {
                     return a.id > b.id
                 })
+            },
+            lockNavigation() {
+                switch (true) {
+                    case window.scrollY > 150:
+                        this.lockedText = 'locked-text'
+                        this.locked = 'locked'
+                        this.$emit('lock')
+                        break;
+                    case window.scrollY > 113:
+                        this.lockedText = 'locked-text'
+                        break;
+                    default:
+                        this.locked = ''
+                        this.lockedText = ''
+                        this.$emit('release')
+                        break;
+                }
             }
         },
         data() {
             return {
                 place: '',
+                locked: '',
+                lockedText: '',
                 items: [
                     {
                         id: 1,
@@ -180,7 +222,7 @@
                     }, {
                         id: 4,
                         name: "Инвестору",
-                        href: "/invest",
+                        href: "/investor",
                         target: "_self",
                         icon: "investor"
                     }, {

@@ -1,11 +1,29 @@
-main {
+section {
     @include outer-container();
     background-color: #fff;
+    display: flex;
+    flex-flow: row nowrap;
+}
+main {
     padding: 1rem 3rem;
+}
+
+aside {
+    width: 17rem;
+
+    & + main {
+        flex-grow: 1;
+    }
 }
 
 h1 {
     font-size: 1.75rem;
+    margin: 2rem 0 1rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+h2 {
+    font-size: 1.5rem;
     margin: 2rem 0 1rem;
     text-transform: uppercase;
 }
@@ -18,5 +36,3 @@ p {
 a {
     color: scale-color($blue, $lightness: 20%);
 }
-
-.header-filler { height: $navigation-height }
