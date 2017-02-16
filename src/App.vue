@@ -38,7 +38,8 @@ export default {
     }
 
     .view-enter-active, .view-leave-active {
-        transition: opacity .2s ease, transform .2s ease
+        transition: opacity .2s ease, transform .2s ease;
+        z-index: 997;
     }
     .view-enter, .view-leave-to {
         opacity: 0

@@ -1,17 +1,17 @@
 <template lang="html">
-    <header :class="locked">
-            <transition-group name="menu-item">
-                <li v-for="(item, index) in items" :class="item.icon" :key="item">
-                    <router-link :to="item.href" :target="item.target" :class="lockedText" active-class="active" exact @click.native="move(index)">
-                        <icon :name="item.icon" />
+    <header :class="locked" class="header">
+            <transition-group name="menu-item" class="wrapper">
+                <li v-for="(item, index) in items" class="item" :class="item.icon" :key="item">
+                    <router-link :to="item.href" :target="item.target" class="link" active-class="active" exact @click.native="move(index)">
+                        <icon class="icon" :name="item.icon" />
                         <p class="text">{{ item.name }}</p>
                     </router-link>
 
-                    <ul v-if="item.sub">
-                        <li v-for="subitem in item.sub">
-                            <router-link :to="subitem.href" :target="subitem.target">
-                                <icon :name="subitem.icon" />
-                                <p>{{ subitem.name }}</p>
+                    <ul v-if="item.sub" class="submenu">
+                        <li v-for="subitem in item.sub" class="subitem">
+                            <router-link :to="subitem.href" :target="subitem.target" class="sublink">
+                                <icon class="subicon" :name="subitem.icon" />
+                                <p class="subtext">{{ subitem.name }}</p>
                             </router-link>
                         </li>
                     </ul>
@@ -25,14 +25,15 @@
     @import "~bourbon-neat/app/assets/stylesheets/neat";
     @import "../assets/variables";
 
-    header {
+    .header {
         width: 100%;
         height: $navigation-height;
         display: block;
         &:before, &:after { display: none }
         top: 0;
     }
-    span {
+
+    .wrapper {
         @include outer-container();
         position: relative;
         height: $navigation-height;
@@ -41,120 +42,152 @@
         justify-content: space-between;
         align-items: center;
         z-index: 999;
+        transition: align-items .3s ease;
         &:before, &:after { display: none }
-
-
     }
-    li {
+
+    .item {
         position: relative;
         list-style: none;
+        display: block;
+        flex-grow: 0;
+        width: 17rem;
+        transition: flex-grow .3s ease;
 
         &.logo {
             color: $black;
-            &:hover a, .active { border-color: $black }
-            ul { background-color: $black }
-            i { margin-top: 1.75rem }
+            &:hover .link:before, &:hover .link:after,
+            .active:before, .active:after,
+            .submenu { background-color: $black }
+            .icon { margin-top: 1.75rem }
         }
         &.market {
             color: $blue;
-            &:hover a, .active { border-color: $blue }
-            ul { background-color: $blue }
+            &:hover .link:before, &:hover .link:after,
+            .active:before, .active:after,
+            .submenu { background-color: $blue }
         }
         &.farmer {
             color: $green;
-            &:hover a, .active { border-color: $green }
-            ul { background-color: $green }
+            &:hover .link:before, &:hover .link:after,
+            .active:before, .active:after,
+            .submenu { background-color: $green }
         }
         &.investor {
             color: $yellow;
-            &:hover a, .active { border-color: $yellow }
-            ul { background-color: $yellow }
+            &:hover .link:before, &:hover .link:after,
+            .active:before, .active:after,
+            .submenu { background-color: $yellow }
         }
         &.company {
             color: $orange;
-            &:hover a, .active { border-color: $orange }
-            ul { background-color: $orange }
-            i {
+            &:hover .link:before, &:hover .link:after,
+            .active:before, .active:after,
+            .submenu { background-color: $orange }
+            .icon {
                 background: url(../assets/company.png) 50% no-repeat;
                 &:before { visibility: hidden }
             }
         }
         &.contacts {
             color: $red;
-            &:hover a, .active { border-color: $red }
-            ul { background-color: $red }
+            &:hover .link:before, &:hover .link:after,
+            .active:before, .active:after,
+            .submenu { background-color: $red }
         }
-        &:hover a, .active {
-            transition: border-width 0.1s ease;
-            border-top: 0.5rem solid;
-            border-bottom: 0.5rem solid;
+        &:hover .link:before, &:hover .link:after,
+        .active:before, .active:after {
+            transition: height 0.1s ease;
+            height: 0.5rem;
         }
-        a {
-            display: flex;
-            justify-content: center;
-            flex-direction: column;
-            color: inherit;
-            background: #fff;
-            width: 17rem;
-            height: 17rem;
-            text-align: center;
-            text-decoration: none;
-            position: relative;
-            z-index: 999;
+        &:hover .submenu { transform: translateY(100%) }
+    }
 
-            .text {
-                font-size: 1.75rem;
-                text-transform: uppercase;
-                font-weight: normal;
-                text-align: center;
+    .link {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        color: inherit;
+        background: #fff;
+        height: 17rem;
+        text-align: center;
+        text-decoration: none;
+        position: relative;
+        z-index: 999;
+        transition: width .3s ease;
 
-                .locked-text & { position: fixed; color: red }
-            }
-            .locked-text .text { background: black }
-
-            i { font-size: 4rem; margin-bottom: 1rem;
-                .locked-text & { display: none }
-            }
-        }
-
-        ul {
+        &:after, &:before {
+            display: block;
+            content: '';
+            height: 0;
             position: absolute;
-            padding: 0;
-            margin: 0;
-            z-index: 998;
+            width: 100%;
             left: 0;
-            bottom: 0;
-            transition: top 0.1s ease, transform 0.1s ease;
-
-            li:hover {
-                border: 0;
-            }
-            a {
-                height: auto;
-                background-color: transparent;
-                color: #fff;
-                display: inline-block;
-                box-sizing: border-box;
-                text-align: center;
-                padding: 0.5rem;
-                font-weight: 300;
-                text-transform: none;
-
-            }
-
         }
-        &:hover ul { transform: translateY(100%) }
+        &:after { bottom: 0 }
+        &:before { top: 0 }
+    }
+
+    .icon { font-size: 4rem; margin-bottom: 1rem }
+
+    .text {
+        font-size: 1.75rem;
+        text-transform: uppercase;
+        margin: 0;
+        font-weight: normal;
+        text-align: center;
+        bottom: 50%;
+        transition: width .3s ease, bottom .3s ease;
+    }
+
+    .submenu {
+        position: absolute;
+        padding: 0;
+        margin: 0;
+        z-index: 998;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        transition: top 0.1s ease, transform 0.1s ease;
+    }
+
+    .subitem:hover {
+        border: 0;
+    }
+
+    .sublink {
+        color: #fff;
+        width: 100%;
+        display: inline-block;
+        padding: 0.5rem;
+        font-weight: 300;
+        text-decoration: none;
+    }
+
+    .subtext {
+        margin: 0;
+        text-align: center;
+        font-size: 1.75rem;
     }
 
     .locked-text {
-
+        .icon { display: none }
+        .item { 
+            flex-grow: 1;
+            &.logo { flex-grow: 5 }
+        }
+        .text { position: absolute; bottom: 0.75rem; width: 100%; }
     }
 
     .locked {
         position: fixed;
-
-        & a { height: 5rem }
-        & span { height: 5rem }
+        height: 4rem;
+        
+        .item:hover .link:before, .item .active:before { height: 0 }
+        .link { width: 100%; box-sizing: content-box; }
+        .item.contacts { margin-bottom: 0 }
+        & a { height: 4rem }
+        & span { height: 4rem }
     }
 
     .menu-item-move {
@@ -180,16 +213,15 @@
             lockNavigation() {
                 switch (true) {
                     case window.scrollY > 150:
-                        this.lockedText = 'locked-text'
-                        this.locked = 'locked'
+                        this.locked = 'locked locked-text'
                         this.$emit('lock')
                         break;
                     case window.scrollY > 113:
-                        this.lockedText = 'locked-text'
+                        this.locked = 'locked-text'
+                        this.$emit('release')
                         break;
                     default:
                         this.locked = ''
-                        this.lockedText = ''
                         this.$emit('release')
                         break;
                 }
@@ -239,6 +271,7 @@
                         icon: "contacts",
                         sub: [
                             {
+                                id: 7,
                                 name: "Клиентам",
                                 href: "/client",
                                 target: "_self",

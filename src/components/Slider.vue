@@ -196,7 +196,7 @@
         components: { Slide, Icon },
         data() {
             return {
-                current: 0,
+                current: '',
                 timer: ''
             }
         },
