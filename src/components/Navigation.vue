@@ -172,17 +172,17 @@
 
     .locked-text {
         .icon { display: none }
-        .item { 
+        .item {
             flex-grow: 1;
             &.logo { flex-grow: 5 }
         }
         .text { position: absolute; bottom: 0.75rem; width: 100%; }
     }
 
-    .locked {
+    .locked-navigation {
         position: fixed;
         height: 4rem;
-        
+
         .item:hover .link:before, .item .active:before { height: 0 }
         .link { width: 100%; box-sizing: content-box; }
         .item.contacts { margin-bottom: 0 }
@@ -199,8 +199,8 @@
     import Icon from './Icon.vue'
 
     export default {
+        props: { locked: String },
         components: { Icon },
-        mounted() { window.addEventListener('scroll', this.lockNavigation) },
         methods: {
             move(index) {
                 if (this.place) this.items[0].id = this.place
@@ -209,29 +209,11 @@
                 this.items.sort( (a, b) => {
                     return a.id > b.id
                 })
-            },
-            lockNavigation() {
-                switch (true) {
-                    case window.scrollY > 150:
-                        this.locked = 'locked locked-text'
-                        this.$emit('lock')
-                        break;
-                    case window.scrollY > 113:
-                        this.locked = 'locked-text'
-                        this.$emit('release')
-                        break;
-                    default:
-                        this.locked = ''
-                        this.$emit('release')
-                        break;
-                }
             }
         },
         data() {
             return {
                 place: '',
-                locked: '',
-                lockedText: '',
                 items: [
                     {
                         id: 1,

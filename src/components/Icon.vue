@@ -20,56 +20,53 @@ export default {
         font-weight: normal;
         font-style: normal;
     }
-/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
-/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
-/*
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-@font-face {
-font-family: 'fontello';
-src: url('../font/fontello.svg?48367180#fontello') format('svg');
-}
-}
-*/
 
-[class^="icon-"]:before, [class*=" icon-"]:before {
-    font-family: "fontello";
-    font-style: normal;
-    font-weight: normal;
-    speak: none;
+     [class^="icon-"]:before, [class*=" icon-"]:before {
+      font-family: "fontello";
+      font-style: normal;
+      font-weight: normal;
+      speak: none;
 
-    display: inline-block;
-    text-decoration: inherit;
-    // width: 1em;
-    margin-right: .2em;
-    text-align: center;
-    /* opacity: .8; */
+      display: inline-block;
+      text-decoration: inherit;
+      width: 1em;
+      margin-right: .2em;
+      text-align: center;
+      /* opacity: .8; */
 
-    /* For safety - reset parent styles, that can break glyph codes*/
-    font-variant: normal;
-    text-transform: none;
+      /* For safety - reset parent styles, that can break glyph codes*/
+      font-variant: normal;
+      text-transform: none;
 
-    /* fix buttons height, for twitter bootstrap */
-    line-height: 1em;
+      /* fix buttons height, for twitter bootstrap */
+      line-height: 1em;
 
-    /* Animation center compensation - margins should be symmetric */
-    /* remove if not needed */
-    margin-left: .2em;
+      /* Animation center compensation - margins should be symmetric */
+      /* remove if not needed */
+      margin-left: .2em;
 
-    /* you can be more comfortable with increased icons size */
-    /* font-size: 120%; */
+      /* you can be more comfortable with increased icons size */
+      /* font-size: 120%; */
 
-    /* Font smoothing. That was taken from TWBS */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+      /* Font smoothing. That was taken from TWBS */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
 
-    /* Uncomment for 3D effect */
-    /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
-}
+      /* Uncomment for 3D effect */
+      /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+    }
 
-.icon-investor:before { content: '\e800'; } /* '' */
-.icon-market:before { content: '\e801'; } /* '' */
-.icon-logo:before { content: '\e802'; } /* '' */
-.icon-farmer:before { content: '\e803'; } /* '' */
-.icon-company:before { content: '\e806'; } /* '' */
-.icon-contacts:before { content: '\f2b6'; } /* '' */
+    .icon-investor:before { content: '\e800'; } /* '' */
+    .icon-market:before { content: '\e801'; } /* '' */
+    .icon-logo:before { content: '\e802'; } /* '' */
+    .icon-farmer:before { content: '\e803'; } /* '' */
+    .icon-location:before { content: '\e804'; } /* '' */
+    .icon-company:before { content: '\e806'; } /* '' */
+    .icon-file-pdf:before { content: '\f1c1'; } /* '' */
+    .icon-money:before { content: '\f0d6'; } /* '' */
+    .icon-newspaper:before { content: '\f1ea'; } /* '' */
+    .icon-contacts:before { content: '\f2b6'; } /* '' */
+
+
+
 </style>

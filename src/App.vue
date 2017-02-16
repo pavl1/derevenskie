@@ -1,8 +1,8 @@
 <template>
-    <div id="app" :class="fixed">
-        <navigation v-on:lock="lock" v-on:release="release" />
+    <div id="app" :class="lockScroll">
+        <navigation :locked="lockNavigation" />
         <transition name="view" mode="out-in">
-            <router-view />
+            <router-view :locked="lockSidebar" />
         </transition>
         <basement />
     </div>
@@ -17,12 +17,37 @@ export default {
     components: { Navigation, Basement },
     data() {
         return {
-            fixed: ''
+            lockScroll: '',
+            lockNavigation: '',
+            lockSidebar: ''
         }
     },
+    mounted() { window.addEventListener('scroll', this.lock) },
     methods: {
-        lock() { this.fixed = 'fixed' },
-        release() { this.fixed = '' }
+        lock() {
+            switch (true) {
+                case window.scrollY > 174:
+                    this.lockScroll = 'locked-scroll'
+                    this.lockNavigation = 'locked-navigation locked-text'
+                    this.lockSidebar = 'locked-sidebar'
+                    break;
+                case window.scrollY > 150:
+                    this.lockScroll = 'locked-scroll'
+                    this.lockNavigation = 'locked-navigation locked-text'
+                    this.lockSidebar = ''
+                    break;
+                case window.scrollY > 113:
+                    this.lockScroll = ''
+                    this.lockNavigation = 'locked-text'
+                    this.lockSidebar = ''
+                    break;
+                default:
+                    this.lockScroll = ''
+                    this.lockNavigation = ''
+                    this.lockSidebar = ''
+                    break;
+            }
+        }
     }
 }
 </script>
@@ -33,7 +58,7 @@ export default {
     @import "./assets/reset";
     @import "./assets/scaffolding";
 
-    .fixed {
+    .locked-scroll {
         padding-top: $navigation-height;
     }
 
