@@ -3,6 +3,8 @@ import App from './App'
 import router from './router'
 
 /* eslint-disable no-new */
+window.Event = new Vue()
+
 new Vue({
   el: '#app',
   router,

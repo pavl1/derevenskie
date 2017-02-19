@@ -1,21 +1,21 @@
 <template>
-    <div>
+    <div class="container">
         <slider></slider>
 
-        <main>
-            <article v-for="item in items" :class="item.name">
+        <div class="content">
+            <article v-for="item in items" class="item" :class="item.name">
                 <div class="tile">
                     <center><icon :name="item.name" /></center>
                     <p>{{ item.description }}</p>
                 </div>
             </article>
-        </main>
+        </div>
     </div>
 </template>
 
 <script>
-    import Slider from './Slider'
-    import Icon from './Icon'
+    import Slider from '../components/Slider'
+    import Icon from '../components/Icon'
 
     export default {
         components: { Slider, Icon },
@@ -52,9 +52,9 @@
     @import "~bourbon-neat/app/assets/stylesheets/neat";
     @import "../assets/variables";
 
-    div { @include outer-container() }
-    main { display: flex; justify-content: space-between; flex-flow: row wrap}
-    article {
+    .container { display: block }
+    .content { display: flex; justify-content: space-between; flex-flow: row wrap; padding: 0; margin-bottom: -2rem }
+    .item {
         margin-bottom: 2rem; width: 30%; flex-grow: 1; margin-right: 2rem;
         &:nth-child(3n+3) { margin-right: 0 }
 
@@ -67,7 +67,6 @@
     .logo { background: $blue }
 
     .tile { padding: 2rem 1rem; color: #fff }
-    main { background: #fff }
 
 	p {
         font-weight: 300;

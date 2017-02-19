@@ -61,12 +61,13 @@ export default {
     .icon-logo:before { content: '\e802'; } /* '' */
     .icon-farmer:before { content: '\e803'; } /* '' */
     .icon-location:before { content: '\e804'; } /* '' */
+    .icon-fuel:before { content: '\e805'; } /* '' */
     .icon-company:before { content: '\e806'; } /* '' */
+    .icon-tech:before { content: '\e807'; } /* '' */
+    .icon-money:before { content: '\f158'; } /* '' */
+    .icon-box:before { content: '\f16b'; } /* '' */
     .icon-file-pdf:before { content: '\f1c1'; } /* '' */
-    .icon-money:before { content: '\f0d6'; } /* '' */
     .icon-newspaper:before { content: '\f1ea'; } /* '' */
     .icon-contacts:before { content: '\f2b6'; } /* '' */
-
-
 
 </style>

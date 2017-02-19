@@ -2,19 +2,10 @@
     <header :class="locked" class="header">
             <transition-group name="menu-item" class="wrapper">
                 <li v-for="(item, index) in items" class="item" :class="item.icon" :key="item">
-                    <router-link :to="item.href" :target="item.target" class="link" active-class="active" exact @click.native="move(index)">
+                    <router-link :to="item.href" :target="item.target" class="link" active-class="active" :exact="item.exact" @click.native="move(index)">
                         <icon class="icon" :name="item.icon" />
                         <p class="text">{{ item.name }}</p>
                     </router-link>
-
-                    <ul v-if="item.sub" class="submenu">
-                        <li v-for="subitem in item.sub" class="subitem">
-                            <router-link :to="subitem.href" :target="subitem.target" class="sublink">
-                                <icon class="subicon" :name="subitem.icon" />
-                                <p class="subtext">{{ subitem.name }}</p>
-                            </router-link>
-                        </li>
-                    </ul>
                 </li>
             </transition-group>
     </header>
@@ -31,6 +22,7 @@
         display: block;
         &:before, &:after { display: none }
         top: 0;
+        z-index: 999
     }
 
     .wrapper {
@@ -140,36 +132,6 @@
         transition: width .3s ease, bottom .3s ease;
     }
 
-    .submenu {
-        position: absolute;
-        padding: 0;
-        margin: 0;
-        z-index: 998;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        transition: top 0.1s ease, transform 0.1s ease;
-    }
-
-    .subitem:hover {
-        border: 0;
-    }
-
-    .sublink {
-        color: #fff;
-        width: 100%;
-        display: inline-block;
-        padding: 0.5rem;
-        font-weight: 300;
-        text-decoration: none;
-    }
-
-    .subtext {
-        margin: 0;
-        text-align: center;
-        font-size: 1.75rem;
-    }
-
     .locked-text {
         .icon { display: none }
         .item {
@@ -220,46 +182,43 @@
                         name: "Деревенские продукты",
                         href: "/",
                         target: "_self",
-                        icon: "logo"
+                        icon: "logo",
+                        exact: true
                     }, {
                         id: 2,
                         name: "Магазин",
                         href: "http://market.derevenskie.pro",
                         target: "_blank",
-                        icon: "market"
+                        icon: "market",
+                        exact: false
                     }, {
                         id: 3,
                         name: "Фермеру",
                         href: "/farmer",
                         target: "_self",
-                        icon: "farmer"
+                        icon: "farmer",
+                        exact: false
                     }, {
                         id: 4,
                         name: "Инвестору",
                         href: "/investor",
                         target: "_self",
-                        icon: "investor"
+                        icon: "investor",
+                        exact: false
                     }, {
                         id: 6,
                         name: "Компания",
                         href: "/company",
                         target: "_self",
-                        icon: "company"
+                        icon: "company",
+                        exact: false
                     }, {
                         id: 7,
                         name: "Контакты",
                         href: "/contacts",
                         target: "_self",
                         icon: "contacts",
-                        sub: [
-                            {
-                                id: 7,
-                                name: "Клиентам",
-                                href: "/client",
-                                target: "_self",
-                                icon: ""
-                            }
-                        ]
+                        exact: false
                     }
                 ]
             }

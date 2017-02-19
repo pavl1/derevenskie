@@ -23,10 +23,40 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
     display: block;
 }
+html {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 10px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
 body {
     line-height: 1;
+    font-size: 1.6rem;
     color: #333;
     background: $background;
+}
+p {
+    margin: 0 0 1rem;
+    line-height: 1.42857143;
+    text-align: justify;
+}
+a { color: scale-color($blue, $lightness: 20%) }
+h1, h2, h3 { margin: 3rem 0 1rem; text-transform: uppercase }
+h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 3rem 0 1rem;
+    &:first-of-type {
+        margin-top: 0
+    }
+}
+h2 {
+    font-size: 2.25rem;
+    font-weight: 600;
+    margin: 2rem 0 1rem
+}
+h3 {
+    font-size: 2rem
 }
 ol, ul {
     list-style: none;
@@ -43,10 +73,6 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
-
-html {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 10px;
-    overflow-x: hidden;
-    overflow-y: scroll;
+td {
+    padding: 0.5rem;
 }

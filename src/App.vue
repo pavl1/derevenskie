@@ -57,24 +57,10 @@ export default {
     @import "./assets/variables";
     @import "./assets/reset";
     @import "./assets/scaffolding";
+    @import "./assets/animations";
 
     .locked-scroll {
         padding-top: $navigation-height;
     }
-
-    .view-enter-active, .view-leave-active {
-        transition: opacity .2s ease, transform .2s ease;
-        z-index: 997;
-    }
-    .view-enter, .view-leave-to {
-        opacity: 0
-    }
-    .view-leave-to {
-        transform: translateX(-10%);
-    }
-    .view-enter {
-        transform: translateX(10%);
-    }
-
 
 </style>

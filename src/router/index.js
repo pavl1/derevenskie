@@ -3,39 +3,118 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-import Main from 'components/Main'
-import Farmer from 'components/Farmer'
-import Investor from 'components/Investor'
-import Company from 'components/Company'
-import Contacts from 'components/Contacts'
-import Client from 'components/Client'
+import Main from 'pages'
+
+import Farmer from 'pages/farmer'
+import FarmerAppeal from 'pages/farmer/Appeal'
+import FarmerFounder from 'pages/farmer/Founder'
+import FarmerAgroholding from 'pages/farmer/Agroholding'
+
+import Investor from 'pages/investor'
+import InvestorAppeal from 'pages/investor/Appeal'
+import InvestorLand from 'pages/investor/Land'
+import InvestorGreenhouse from 'pages/investor/Greenhouse'
+import InvestorFarm from 'pages/investor/Farm'
+import InvestorApiary from 'pages/investor/Apiary'
+import InvestorStore from 'pages/investor/Store'
+import InvestorContacts from 'pages/investor/Contacts'
+
+import Company from 'pages/company'
+import CompanyIdea from 'pages/company/Idea'
+import CompanyCommand from 'pages/company/Command'
+import CompanyAbout from 'pages/company/About'
+
+import Contacts from 'pages/contacts'
+import ContactsStarostenko from 'pages/contacts/Starostenko'
+import ContactsVoytovich from 'pages/contacts/Voytovich'
+import ContactsInvestor from 'pages/contacts/Investor'
+// import ContactsClients from 'components/ContactsClients'
 
 export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'Main',
-      component: Main
-    }, {
-      path: '/farmer',
-      name: 'Farmer',
-      component: Farmer
-    }, {
-      path: '/investor',
-      name: 'Investor',
-      component: Investor
-    }, {
-      path: '/company',
-      name: 'Company',
-      component: Company
-    }, {
-      path: '/contacts',
-      name: 'Contacts',
-      component: Contacts
-    }, {
-      path: '/client',
-      name: 'Client',
-      component: Client
-    }
-  ]
+    routes: [
+        {
+            path: '/',
+            name: 'Main',
+            component: Main
+        }, {
+            path: '/farmer',
+            component: Farmer,
+            children: [
+                {
+                    path: '',
+                    component: FarmerAppeal
+                }, {
+                    path: 'founder',
+                    component: FarmerFounder
+                }, {
+                    path: 'agroholding',
+                    component: FarmerAgroholding
+                }
+            ]
+        }, {
+            path: '/investor',
+            component: Investor,
+            children: [
+                {
+                    path: '',
+                    component: InvestorAppeal
+                },
+                {
+                    path: 'land',
+                    component: InvestorLand
+                },
+                {
+                    path: 'greenhouse',
+                    component: InvestorGreenhouse
+                },
+                {
+                    path: 'farm',
+                    component: InvestorFarm
+                },
+                {
+                    path: 'apiary',
+                    component: InvestorApiary
+                },
+                {
+                    path: 'store',
+                    component: InvestorStore
+                },
+                {
+                    path: 'contacts',
+                    component: InvestorContacts
+                },
+
+            ]
+        }, {
+            path: '/company',
+            component: Company,
+            children: [
+                {
+                    path: '',
+                    component: CompanyIdea
+                }, {
+                    path: 'command',
+                    component: CompanyCommand
+                }, {
+                    path: 'about',
+                    component: CompanyAbout
+                }
+            ]
+        }, {
+            path: '/contacts',
+            component: Contacts,
+            children: [
+                {
+                    path: '',
+                    component: ContactsStarostenko
+                }, {
+                    path: 'voytovich',
+                    component: ContactsVoytovich
+                }, {
+                    path: 'investor',
+                    component: ContactsInvestor
+                }
+            ]
+        }
+    ]
 })

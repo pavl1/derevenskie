@@ -1,5 +1,5 @@
 <template lang="html">
-    <ul class="slides container">
+    <ul class="slides">
 
         <input type="radio" name="radio-btn" :id="0" :checked="current == 0" />
         <li class="market">
@@ -38,6 +38,9 @@
         <li class="client">
             <router-link to="/client" target="_self">
                 <img src="/static/client.jpg" />
+                <div class="decoration-element">
+                    <icon name="logo" />
+                </div>
                 <div class="text">
                     <h1 slot="title">Хватай удачу за хвостик</h1>
                     <p slot="description">Стань постоянным клиентом</p>
@@ -51,7 +54,7 @@
                 <img src="/static/contacts.jpg" />
                 <div class="text">
                     <h1 slot="title">Остались вопросы</h1>
-                    <p slot="description">Позвони прямо сейчас (3952) 995-108</p>
+                    <p slot="description">Позвони прямо сейчас 8 (3952) 995-108</p>
                 </div>
             </router-link>
         </li>
@@ -69,9 +72,6 @@
 <style lang="scss" scoped>
     @import "~bourbon-neat/app/assets/stylesheets/neat";
 
-    .container {
-        @include outer-container();
-    }
     .slides {
         padding: 0;
         height: 420px;
@@ -79,8 +79,6 @@
         margin-bottom: 2rem;
         position: relative;
         background: #fff;
-        z-index: -1;
-        
     }
 
     .slides * {
@@ -130,7 +128,6 @@
         .investor & { object-position: 0 1.5%; }
         .farmer & { object-position: 0 100%; }
         .contacts & { object-position: 0 100%; }
-        // .company & { width: 80px; height: 80px; left: 28.5%; top: 25%; position: absolute }
     }
 
     .text {
@@ -150,6 +147,13 @@
             font-weight: 300;
             margin-bottom: 1rem;
         }
+    }
+
+    .decoration-element {
+        position: absolute;
+        top: 21%;
+        left: 26%;
+        font-size: 10rem;
     }
 
     .nav-dots {
@@ -180,11 +184,11 @@
         }
     }
 
-    input#1:checked ~ .nav-dots label#img-dot-1,
-    input#2:checked ~ .nav-dots label#img-dot-2,
-    input#3:checked ~ .nav-dots label#img-dot-3,
-    input#4:checked ~ .nav-dots label#img-dot-4,
-    input#5:checked ~ .nav-dots label#img-dot-5 {
+    input#1:checked ~ .nav-dots label#1,
+    input#2:checked ~ .nav-dots label#2,
+    input#3:checked ~ .nav-dots label#3,
+    input#4:checked ~ .nav-dots label#4,
+    input#5:checked ~ .nav-dots label#5 {
         background: rgba(0, 0, 0, 0.8);
     }
 </style>
