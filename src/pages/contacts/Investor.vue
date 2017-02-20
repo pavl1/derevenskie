@@ -26,10 +26,7 @@
                 <td></td>
             </tr>
         </table>
-        <div class="clock_yandex">
-            <iframe  frameborder="no" scrolling="no" width="280" height="150" src="https://yandex.ru/time/widget/?geoid=63&lang=ru&layout=horiz&type=digital&face=serif"></iframe>
-
-        </div>
+        <!-- FIXME: добавить компонент часов -->
     </div>
 </template>
 
@@ -39,8 +36,4 @@
     }
 </script>
 
-<style scoped>
-.clock_yandex {
-    margin-top: 2rem
-}
-</style>
+<style></style>

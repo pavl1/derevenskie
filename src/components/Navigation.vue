@@ -135,21 +135,21 @@
     .locked-text {
         .icon { display: none }
         .item {
-            flex-grow: 1;
-            &.logo { flex-grow: 5 }
+            // flex-grow: 1;
+            // &.logo { flex-grow: 5 }
         }
         .text { position: absolute; bottom: 0.75rem; width: 100%; }
     }
 
     .locked-navigation {
         position: fixed;
-        height: 4rem;
+        height: 6rem;
 
         .item:hover .link:before, .item .active:before { height: 0 }
         .link { width: 100%; box-sizing: content-box; }
         .item.contacts { margin-bottom: 0 }
-        & a { height: 4rem }
-        & span { height: 4rem }
+        & a { height: 6rem }
+        & span { height: 6rem }
     }
 
     .menu-item-move {

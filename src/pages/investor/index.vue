@@ -1,7 +1,7 @@
 <template>
     <section class="container">
         <aside class="sidebar">
-            <div :class="locked" class="side-menu">
+            <div class="side-menu">
                 <router-link class="side-link" active-class="side-active" exact to="/investor">Обращение к инвесторам</router-link>
                 <router-link class="side-link" active-class="side-active" exact to="/investor/land">Освоение земель</router-link>
                 <router-link class="side-link" active-class="side-active" exact to="/investor/greenhouse">Тепличное хозяйство</router-link>

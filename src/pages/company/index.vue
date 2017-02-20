@@ -1,7 +1,7 @@
 <template>
     <section class="container">
         <aside class="sidebar">
-            <div :class="locked" class="side-menu">
+            <div class="side-menu">
                 <router-link class="side-link" active-class="side-active" exact to="/company">Наша<br />идея</router-link>
                 <router-link class="side-link" active-class="side-active" exact to="/company/command">Наша<br />команда</router-link>
                 <router-link class="side-link" active-class="side-active" exact to="/company/about">Наша компания</router-link>
