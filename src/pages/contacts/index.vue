@@ -5,6 +5,8 @@
                 <router-link class="side-link" active-class="side-active" exact to="/contacts">КФХ Старостенко&nbsp;А.А.</router-link>
                 <router-link class="side-link" active-class="side-active" exact to="/contacts/voytovich">КФХ Войтович&nbsp;Н.А.</router-link>
                 <router-link class="side-link" active-class="side-active" exact to="/contacts/investor">Контакты для инвесторов</router-link>
+                <router-link class="side-link" active-class="side-active" exact to="/contacts/land">Расположение земель</router-link>
+                <router-link class="side-link" active-class="side-active" exact to="/contacts/office">Расположение офиса</router-link>
             </div>
         </aside>
 

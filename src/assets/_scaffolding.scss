@@ -3,8 +3,7 @@
     display: flex;
     flex-flow: row nowrap;
 }
-.row { @include row() }
-.content { padding: 1rem 3rem; flex-grow: 1 }
+.content { padding: 1rem 0 1rem 3rem; flex-grow: 1 }
 
 .sidebar { max-width: 17rem; min-width: 17rem }
 .side-menu { padding-bottom: 10rem }
@@ -26,7 +25,17 @@
 }
 
 .right { text-align: right }
-.description { @include span-columns(6) }
-.question { @include span-columns(6);
-    p { text-align: center }
+.row { display: flex; flex-flow: row nowrap }
+.description { flex-grow: 5 }
+.question {
+    display: flex;
+    align-items: center;
 }
+.wrapper-vertical {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 0 3rem;
+}
+.button-delimeter { text-align: center; margin: 0.5rem; font-size: 2rem }
+.map { min-height: 100% }

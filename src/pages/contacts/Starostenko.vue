@@ -69,13 +69,12 @@
                 <td class="right">Корреспондентский счёт</td>
                 <td>30101810700000000700</td>
             </tr>
-
         </table>
     </div>
 </template>
 
 <script>
-export default {}
+    export default { }
 </script>
 
 <style>

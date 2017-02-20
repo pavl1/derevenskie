@@ -24,28 +24,24 @@
             </tr>
         </table>
 
-        <h2>Сметная стоимость</h2>
         <div class="row">
             <div class="description">
+                <h2>Сметная стоимость</h2>
                 <p>Представлены сокращенные варианты инвестиционных проектов. С полными вариантами можно ознакомиться при встрече у нас в офисе.</p>
                 <p><a href="#"><icon name="file-pdf" /> Инвестиционный проект по введению в оборот 3000 га залежных земель в Тулунском районе Иркутской области</a></p>
             </div>
             <div class="question">
-                <p>
+                <div class="wrapper-vertical">
                     <button-call>
                         <template slot="text">Задать вопрос</template>
                         <template slot="number">8(902)5-166-108</template>
                     </button-call>
-                </p>
-                <p>или</p>
-                <p>
-                    <p>
-                        <button-call>
-                            <template slot="text">Подать заявку</template>
-                            <template slot="number">8(3952)686-108</template>
-                        </button-call>
-                    </p>
-                </p>
+                    <span class="button-delimeter">или</span>
+                    <button-call>
+                        <template slot="text">Подать заявку</template>
+                        <template slot="number">8(3952)686-108</template>
+                    </button-call>
+                </div>
             </div>
         </div>
         <h2>Ожидаемый эффект</h2>
@@ -136,7 +132,7 @@
     }
 </script>
 
-<style >
+<style>
     .caption, .options {
         height: 2.5rem;
         vertical-align: middle;

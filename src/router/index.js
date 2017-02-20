@@ -28,6 +28,8 @@ import Contacts from 'pages/contacts'
 import ContactsStarostenko from 'pages/contacts/Starostenko'
 import ContactsVoytovich from 'pages/contacts/Voytovich'
 import ContactsInvestor from 'pages/contacts/Investor'
+import ContactsLand from 'pages/contacts/Land'
+import ContactsOffice from 'pages/contacts/Office'
 // import ContactsClients from 'components/ContactsClients'
 
 export default new Router({
@@ -113,6 +115,12 @@ export default new Router({
                 }, {
                     path: 'investor',
                     component: ContactsInvestor
+                }, {
+                    path: 'land',
+                    component: ContactsLand
+                }, {
+                    path: 'office',
+                    component: ContactsOffice
                 }
             ]
         }
