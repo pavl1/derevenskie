@@ -1,12 +1,11 @@
 <template>
-    <span>
-        {{ data[current].name }}
+    <span v-html="data[current].name">
     </span>
 </template>
 
 <script>
 export default {
-    props: { data: Array, name: String },
+    props: { data: Array, name: String, list: Boolean },
     data() {
         return {
             current: 0
@@ -20,4 +19,7 @@ export default {
 }
 </script>
 
-<style></style>
+<style scoped>
+    .result-ul {margin-left: 2rem }
+    .result-li {list-style: square }
+</style>

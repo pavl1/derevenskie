@@ -64,10 +64,13 @@ export default {
     .icon-fuel:before { content: '\e805'; } /* '' */
     .icon-company:before { content: '\e806'; } /* '' */
     .icon-tech:before { content: '\e807'; } /* '' */
+    .icon-tools:before { content: '\e808'; } /* '' */
+    .icon-tools-1:before { content: '\e809'; } /* '' */
+    .icon-percent-1:before { content: '\e80a'; } /* '' */
+    .icon-cow:before { content: '\e80f'; } /* '' */
     .icon-money:before { content: '\f158'; } /* '' */
     .icon-box:before { content: '\f16b'; } /* '' */
     .icon-file-pdf:before { content: '\f1c1'; } /* '' */
-    .icon-newspaper:before { content: '\f1ea'; } /* '' */
+    .icon-percent:before { content: '\f295'; } /* '' */
     .icon-contacts:before { content: '\f2b6'; } /* '' */
-
 </style>
