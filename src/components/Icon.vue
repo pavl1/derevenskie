@@ -1,5 +1,5 @@
 <template lang="html">
-    <i :class="'icon-' + name"></i>
+    <i :class="'icon icon-' + name"></i>
 </template>
 
 <script>
@@ -56,21 +56,23 @@ export default {
       /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
     }
 
-    .icon-investor:before { content: '\e800'; } /* '' */
-    .icon-market:before { content: '\e801'; } /* '' */
-    .icon-logo:before { content: '\e802'; } /* '' */
-    .icon-farmer:before { content: '\e803'; } /* '' */
-    .icon-location:before { content: '\e804'; } /* '' */
-    .icon-fuel:before { content: '\e805'; } /* '' */
-    .icon-company:before { content: '\e806'; } /* '' */
-    .icon-tech:before { content: '\e807'; } /* '' */
-    .icon-tools:before { content: '\e808'; } /* '' */
-    .icon-tools-1:before { content: '\e809'; } /* '' */
-    .icon-percent-1:before { content: '\e80a'; } /* '' */
+    .icon-phone:before { content: '\e800'; } /* '' */
+    .icon-investor:before { content: '\e802'; } /* '' */
+    .icon-market:before { content: '\e803'; } /* '' */
+    .icon-logo:before { content: '\e806'; } /* '' */
+    .icon-farmer:before { content: '\e808'; } /* '' */
+    .icon-location:before { content: '\e809'; } /* '' */
+    .icon-fuel:before { content: '\e80a'; } /* '' */
+    .icon-company:before { content: '\e80b'; } /* '' */
+    .icon-tech:before { content: '\e80c'; } /* '' */
+    .icon-tools:before { content: '\e80d'; } /* '' */
+    .icon-percent-1:before { content: '\e80e'; } /* '' */
     .icon-cow:before { content: '\e80f'; } /* '' */
-    .icon-money:before { content: '\f158'; } /* '' */
-    .icon-box:before { content: '\f16b'; } /* '' */
-    .icon-file-pdf:before { content: '\f1c1'; } /* '' */
+    .icon-money:before { content: '\e810'; } /* '' */
+    .icon-box:before { content: '\e811'; } /* '' */
+    .icon-file-pdf:before { content: '\e812'; } /* '' */
+    .icon-contacts:before { content: '\e813'; } /* '' */
+    .icon-mobile:before { content: '\f10b'; } /* '' */
     .icon-percent:before { content: '\f295'; } /* '' */
-    .icon-contacts:before { content: '\f2b6'; } /* '' */
+    .icon-deal:before { content: '\f2b5'; } /* '' */
 </style>

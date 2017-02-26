@@ -3,18 +3,18 @@
 
         <input type="radio" name="radio-btn" :id="0" :checked="current == 0" />
         <li class="market">
-            <router-link to="market.derevenskie.pro" target="_blank">
+            <!-- <router-link to="/market" target="_self" @click.native="changeMenu('/market')"> -->
                 <img src="/static/market.jpg" />
                 <div class="text">
                     <h1>Собери свою корзину</h1>
                     <p>Настоящий вкус <Icon name="logo" /> Польза для здоровья <Icon name="logo" /> Свежесть</p>
                 </div>
-            </router-link>
+            <!-- </router-link> -->
         </li>
 
         <input type="radio" name="radio-btn" :id="1" :checked="current == 1" />
         <li class="farmer">
-            <router-link to="/farmer" target="_self">
+            <router-link to="/farmer" target="_self" @click.native="changeMenu('/farmer')">
                 <img src="/static/farmer.jpg" />
                 <div class="text">
                     <h1>Русагрохолдинг для фермеров</h1>
@@ -25,7 +25,7 @@
 
         <input type="radio" name="radio-btn" :id="2" :checked="current == 2" />
         <li class="investor">
-            <router-link to="/investor" target="_self">
+            <router-link to="/investor" target="_self" @click.native="changeMenu('/investor')">
                 <img src="/static/investor.jpg" />
                 <div class="text">
                     <h1 >Инвестируй разумно</h1>
@@ -36,7 +36,7 @@
 
         <input type="radio" name="radio-btn" :id="3" :checked="current == 3" />
         <li class="client">
-            <router-link to="/client" target="_self">
+            <router-link to="/market" target="_self" @click.native="changeMenu('/market')">
                 <img src="/static/client.jpg" />
                 <div class="decoration-element">
                     <icon name="logo" />
@@ -50,7 +50,7 @@
 
         <input type="radio" name="radio-btn" :id="4" :checked="current == 4" />
         <li class="contacts">
-            <router-link to="/contacts" target="_self">
+            <router-link to="/contacts" target="_self" @click.native="changeMenu('/contacts')">
                 <img src="/static/contacts.jpg" />
                 <div class="text">
                     <h1 slot="title">Остались вопросы</h1>
@@ -216,6 +216,10 @@
                 clearTimeout(this.timer)
                 this.current = id
                 this.run()
+            },
+            changeMenu(target) {
+                console.log(123)
+                window.Event.$emit('menu-change', { target: target })
             }
         }
     }

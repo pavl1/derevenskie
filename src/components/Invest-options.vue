@@ -8,7 +8,7 @@
                 @mouseover="activate(option.id)">
             </li>
         </ul>
-        {{ data[current].name }}
+        <span v-html="data[current].name"></span>
     </span>
 </template>
 

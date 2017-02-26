@@ -164,6 +164,11 @@
     export default {
         props: { locked: String },
         components: { Icon },
+        created() {
+            window.Event.$on('menu-change', (payload) => {
+                this.move( this.items.findIndex( (item) => item.href === payload.target ) )
+            })
+        },
         methods: {
             move(index) {
                 if (this.place) this.items[0].id = this.place
@@ -188,8 +193,8 @@
                     }, {
                         id: 2,
                         name: "Магазин",
-                        href: "http://market.derevenskie.pro",
-                        target: "_blank",
+                        href: "/market",
+                        target: "_self",
                         icon: "market",
                         exact: false
                     }, {

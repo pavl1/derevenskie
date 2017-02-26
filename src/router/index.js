@@ -5,6 +5,9 @@ Vue.use(Router)
 
 import Main from 'pages'
 
+import Market from 'pages/market'
+import MarketAppeal from 'pages/market/Appeal'
+
 import Farmer from 'pages/farmer'
 import FarmerAppeal from 'pages/farmer/Appeal'
 import FarmerFounder from 'pages/farmer/Founder'
@@ -38,6 +41,16 @@ export default new Router({
             path: '/',
             name: 'Main',
             component: Main
+        },
+        {
+            path: '/market',
+            component: Market,
+            children: [
+                {
+                    path: '',
+                    component: MarketAppeal
+                }
+            ]
         }, {
             path: '/farmer',
             component: Farmer,
