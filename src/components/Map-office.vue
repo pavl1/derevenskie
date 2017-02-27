@@ -13,10 +13,12 @@
             <h1 slot="title">Заказать обратный звонок</h1>
             <div slot="content">
                 <p>Заполните форму и мы перезвоним Вам</p>
-                <form v-on:submit.prevent="sendCallback()">
+                <form id="form" v-on:submit.prevent>
                     <input type="text" class="callback-name" v-model="callback.name" placeholder="Имя">
                     <input type="text" class="callback-phone" v-model="callback.phone" placeholder="Телефон">
-                    <button type="submit" class="callback-button" :disabled="!error"><icon name="send" /> Позвоните мне</button>
+                    <!-- <div class="g-recaptcha" :data-sitekey="recaptcha.sitekey" data-size="invisible" :data-callback="sendCallback"></div> -->
+                    <!-- <button type="submit" class="callback-button" @click="sendCallback"> Позвоните мне</button> -->
+                    <button class="g-recaptcha callback-button" :data-sitekey="recaptcha.sitekey" :data-callback="sendCallback">Submit</button>
                 </form>
             </div>
         </modal>
@@ -36,6 +38,10 @@
                 callback: {
                     name: '',
                     phone: ''
+                },
+                recaptcha: {
+                    sitekey: '6Le6ChcUAAAAAGeWop0jkgQmPl64kC2Oxxbe7v_M',
+                    id: 0
                 }
             }
         },
@@ -45,23 +51,30 @@
             }
         },
         mounted() {
-            DG.then( function() {
-                var office = DG.map('office', {
-                    center: [ 52.28979260716191, 104.28500791168214 ],
-                    zoom:16,
-                    projectDetector: false,
-                    fullscreenControl: false,
-                    scrollWheelZoom: false
-                })
-                DG.marker([ 52.2895, 104.2790 ]).addTo(office)
-            })
+            // DG.then( function() {
+            //     var office = DG.map('office', {
+            //         center: [ 52.28979260716191, 104.28500791168214 ],
+            //         zoom:16,
+            //         projectDetector: false,
+            //         fullscreenControl: false,
+            //         scrollWheelZoom: false
+            //     })
+            //     DG.marker([ 52.2895, 104.2790 ]).addTo(office)
+            // })
             window.Event.$on('modal-hide', () => { this.hideModal() })
+
+            // if (window.recaptcha) {
+                // grecaptcha.execute()
+                // this.recaptcha.id = grecaptcha.render( document.querySelector('.g-recaptcha'), { sitekey: this.recaptcha.sitekey } )
+            // }
         },
         methods: {
             showModal() { this.modal = true },
             hideModal() { this.modal = false },
-            sendCallback() {
-                console.log(this.callback.name +  ' ' + this.callback.phone)
+            sendCallback(token) {
+                document.querySelector('form').submit()
+                // grecaptcha.execute()
+                // var token = grecaptcha.getResponse()
             }
         }
     }
