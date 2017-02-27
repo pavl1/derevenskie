@@ -66,13 +66,13 @@ export default {
     .icon-company:before { content: '\e80b'; } /* '' */
     .icon-tech:before { content: '\e80c'; } /* '' */
     .icon-tools:before { content: '\e80d'; } /* '' */
-    .icon-percent-1:before { content: '\e80e'; } /* '' */
     .icon-cow:before { content: '\e80f'; } /* '' */
     .icon-money:before { content: '\e810'; } /* '' */
     .icon-box:before { content: '\e811'; } /* '' */
     .icon-file-pdf:before { content: '\e812'; } /* '' */
     .icon-contacts:before { content: '\e813'; } /* '' */
     .icon-mobile:before { content: '\f10b'; } /* '' */
+    .icon-send:before { content: '\f1d8'; } /* '' */
     .icon-percent:before { content: '\f295'; } /* '' */
     .icon-deal:before { content: '\f2b5'; } /* '' */
 </style>
