@@ -9,16 +9,26 @@
             <span class="callback-button" @click="showModal()">Заказать звонок</span>
         </div>
 
+        <!-- FIXME: анимация появления и скрытия окна -->
         <modal v-show="modal">
             <h1 slot="title">Заказать обратный звонок</h1>
             <div slot="content">
                 <p>Заполните форму и мы перезвоним Вам</p>
-                <form id="form" v-on:submit.prevent>
-                    <input type="text" class="callback-name" v-model="callback.name" placeholder="Имя">
-                    <input type="text" class="callback-phone" v-model="callback.phone" placeholder="Телефон">
-                    <!-- <div class="g-recaptcha" :data-sitekey="recaptcha.sitekey" data-size="invisible" :data-callback="sendCallback"></div> -->
-                    <!-- <button type="submit" class="callback-button" @click="sendCallback"> Позвоните мне</button> -->
-                    <button class="g-recaptcha callback-button" :data-sitekey="recaptcha.sitekey" :data-callback="sendCallback">Submit</button>
+                <form id="form" v-on:submit.prevent="sendCallback">
+                    <!-- FIXME: анимация правильного/неправльного значения (зеленая/красная окантовка у полей) -->
+                    <input 
+                        type="text" 
+                        class="callback-name" 
+                        v-model="callback.name" 
+                        placeholder="Имя" />
+                    <cleave 
+                        type="text" 
+                        class="callback-phone"
+                        v-model="callback.phone"
+                        v-bind:options="options.phone"
+                        placeholder="Телефон" />
+                    <input type="text" class="callback-captcha" v-model="callback.captcha" />
+                    <button type="button" class="callback-button" @click="sendCallback" :disabled="!error"> Позвоните мне</button>
                 </form>
             </div>
         </modal>
@@ -29,52 +39,61 @@
 <script>
     import Icon from './Icon'
     import Modal from './Modal'
+    import Axios from 'axios'
+    import Cleave from './Cleave'
+    require('../assets/cleave-phone.ru.js')
 
     export default {
-        components: { Icon, Modal },
+        components: { Icon, Modal, Cleave },
         data() {
             return {
                 modal: false,
                 callback: {
                     name: '',
-                    phone: ''
+                    phone: '',
+                    captcha: ''
                 },
-                recaptcha: {
-                    sitekey: '6Le6ChcUAAAAAGeWop0jkgQmPl64kC2Oxxbe7v_M',
-                    id: 0
+                options: {
+                    phone: {
+                        phone: true,
+                        phoneRegionCode: 'RU'
+                    }
                 }
             }
         },
         computed: {
             error() {
-                return (this.callback.name.length > 3) && (this.callback.phone.length == 11)
+                return (this.callback.name.length > 3) && ( this.callback.phone.length > 12)
             }
         },
         mounted() {
-            // DG.then( function() {
-            //     var office = DG.map('office', {
-            //         center: [ 52.28979260716191, 104.28500791168214 ],
-            //         zoom:16,
-            //         projectDetector: false,
-            //         fullscreenControl: false,
-            //         scrollWheelZoom: false
-            //     })
-            //     DG.marker([ 52.2895, 104.2790 ]).addTo(office)
-            // })
+            DG.then( function() {
+                var office = DG.map('office', {
+                    center: [ 52.28979260716191, 104.28500791168214 ],
+                    zoom:16,
+                    projectDetector: false,
+                    fullscreenControl: false,
+                    scrollWheelZoom: false
+                })
+                DG.marker([ 52.2895, 104.2790 ]).addTo(office)
+            })
             window.Event.$on('modal-hide', () => { this.hideModal() })
-
-            // if (window.recaptcha) {
-                // grecaptcha.execute()
-                // this.recaptcha.id = grecaptcha.render( document.querySelector('.g-recaptcha'), { sitekey: this.recaptcha.sitekey } )
-            // }
         },
         methods: {
             showModal() { this.modal = true },
             hideModal() { this.modal = false },
             sendCallback(token) {
-                document.querySelector('form').submit()
-                // grecaptcha.execute()
-                // var token = grecaptcha.getResponse()
+                axios.post('http://localhost:8000/mail.php', {
+                    name: this.callback.name,
+                    phone: this.callback.phone,
+                    captcha: this.callback.captcha
+                })
+                .then( (response) => {
+                    console.log(response);
+                })
+                .catch( (error) => {
+                    console.log(error);
+                })
             }
         }
     }
@@ -97,29 +116,6 @@
     .text { margin-left: 3rem; text-align: left }
     .icon-absolute { position: absolute; left: 2rem }
 
-    .callback-button {
-        display: block;
-        margin: 1rem auto 0;
-        padding: 1rem 2rem;
-        width: 20rem;
-        background: $green;
-        font-size: 1.6rem;
-        color: #fff;
-        text-align: center;
-        cursor: pointer;
-        transition: background .3s ease;
-        border: 0;
-
-        &:hover {
-            background: scale-color($green, $lightness: 10%);
-        }
-
-        &:disabled {
-            background: $black;
-            cursor: not-allowed;
-        }
-    }
-
     .callback {
 
         &-name, &-phone {
@@ -131,6 +127,33 @@
         &-name {
             margin-right: 4%;
             float: left;
+        }
+
+        &-button {
+            display: block;
+            margin: 1rem auto 0;
+            padding: 1rem 2rem;
+            width: 20rem;
+            background: $green;
+            font-size: 1.6rem;
+            color: #fff;
+            text-align: center;
+            cursor: pointer;
+            transition: background .3s ease;
+            border: 0;
+
+            &:hover {
+                background: scale-color($green, $lightness: 10%);
+            }
+
+            &:disabled {
+                background: $black;
+                cursor: not-allowed;
+            }
+        }
+
+        &-captcha {
+            display: none;
         }
     }
 </style>

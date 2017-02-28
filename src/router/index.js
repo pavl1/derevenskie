@@ -10,8 +10,7 @@ import MarketAppeal from 'pages/market/Appeal'
 
 import Farmer from 'pages/farmer'
 import FarmerAppeal from 'pages/farmer/Appeal'
-import FarmerFounder from 'pages/farmer/Founder'
-import FarmerAgroholding from 'pages/farmer/Agroholding'
+import FarmerSale from 'pages/farmer/Sale'
 
 import Investor from 'pages/investor'
 import InvestorAppeal from 'pages/investor/Appeal'
@@ -59,11 +58,8 @@ export default new Router({
                     path: '',
                     component: FarmerAppeal
                 }, {
-                    path: 'founder',
-                    component: FarmerFounder
-                }, {
-                    path: 'agroholding',
-                    component: FarmerAgroholding
+                    path: 'Sale',
+                    component: FarmerSale
                 }
             ]
         }, {
