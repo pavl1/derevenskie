@@ -10,6 +10,7 @@
                 <router-link class="side-link" active-class="side-active" exact to="/investor/store">Хранилище овощей</router-link>
                 <router-link class="side-link" active-class="side-active" exact to="/investor/contacts">Контакты для инвесторов</router-link>
             </div>
+            <social />
         </aside>
 
         <main class="content">
@@ -21,7 +22,9 @@
 </template>
 
 <script>
+    import Social from '../../components/Social'
     export default {
+        components: { Social },
         props: { locked: String },
     }
 </script>

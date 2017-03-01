@@ -6,6 +6,7 @@
                 <router-link class="side-link" active-class="side-active" exact to="/company/command">Наша<br />команда</router-link>
                 <router-link class="side-link" active-class="side-active" exact to="/company/about">Наша компания</router-link>
             </div>
+            <social />
         </aside>
 
         <main class="content">
@@ -17,7 +18,9 @@
 </template>
 
 <script>
+import Social from '../../components/Social'
 export default {
+    components: { Social },
     props: { locked: String }
 }
 </script>

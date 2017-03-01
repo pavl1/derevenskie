@@ -16,13 +16,13 @@
                 <p>Заполните форму и мы перезвоним Вам</p>
                 <form id="form" v-on:submit.prevent="sendCallback">
                     <!-- FIXME: анимация правильного/неправльного значения (зеленая/красная окантовка у полей) -->
-                    <input 
-                        type="text" 
-                        class="callback-name" 
-                        v-model="callback.name" 
+                    <input
+                        type="text"
+                        class="callback-name"
+                        v-model="callback.name"
                         placeholder="Имя" />
-                    <cleave 
-                        type="text" 
+                    <cleave
+                        type="text"
                         class="callback-phone"
                         v-model="callback.phone"
                         v-bind:options="options.phone"
@@ -83,7 +83,7 @@
             showModal() { this.modal = true },
             hideModal() { this.modal = false },
             sendCallback(token) {
-                axios.post('http://localhost:8000/mail.php', {
+                Axios.post('/mail.php', {
                     name: this.callback.name,
                     phone: this.callback.phone,
                     captcha: this.callback.captcha

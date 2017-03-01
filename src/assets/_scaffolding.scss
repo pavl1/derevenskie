@@ -5,7 +5,7 @@
 }
 .content { padding: 1rem 0 1rem 3rem; flex-grow: 1 }
 
-.sidebar { max-width: 17rem; min-width: 17rem }
+.sidebar { max-width: 17rem; min-width: 17rem; position: relative; }
 .side-menu { padding-bottom: 10rem }
 .locked-sidebar {
     position: fixed;

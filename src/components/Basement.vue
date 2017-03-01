@@ -1,13 +1,18 @@
 <template lang="html">
     <footer>
         <div>
-            Деревенские продукты © 2013-2017 ООО "Источник и ресурсы" (Source&Resources LLC.)
+            Деревенские продукты © 2013-2017 <a href="http://invest-in-land.ru">ООО "Источник и ресурсы"</a> (Source&Resources LLC.)
         </div>
 	</footer>
 </template>
 
 <style lang="scss" scoped>
     @import "~bourbon-neat/app/assets/stylesheets/neat";
+
+    a {
+        color: #fff;
+        text-decoration: none;
+    }
 
     footer {
         background: #282f33;

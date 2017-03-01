@@ -8,6 +8,7 @@
                 <router-link class="side-link" active-class="side-active" exact to="/contacts/land">Расположение земель</router-link>
                 <router-link class="side-link" active-class="side-active" exact to="/contacts/office">Расположение офиса</router-link>
             </div>
+            <social />
         </aside>
 
         <main class="content">
@@ -19,7 +20,9 @@
 </template>
 
 <script>
+import Social from '../../components/Social'
 export default {
+    components: { Social },
     props: { locked: String }
 }
 </script>
