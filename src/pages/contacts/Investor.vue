@@ -21,17 +21,17 @@
                 <td><a href="mailto: roman@invest-in-land.ru">roman@invest-in-land.ru</a></td>
             </tr>
             <tr>
-                <!-- FIXME: компонент времени -->
                 <td class="right">Иркутское время</td>
-                <td></td>
+                <td><clock /></td>
             </tr>
         </table>
-        <!-- FIXME: добавить компонент часов -->
     </div>
 </template>
 
 <script>
+    import Clock from '../../components/Clock'
     export default {
+        components: { Clock },
         props: { locked: String }
     }
 </script>

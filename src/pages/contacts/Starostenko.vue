@@ -28,7 +28,7 @@
                 <td class="right">Телефоны для инвесторов</td>
                 <td>8(3952)686-108, 8(902)5-166-108</td>
             </tr>
-            <!-- FIXME: защитить  -->
+            <!-- FIXME: защитить e-mail -->
             <tr>
                 <td class="right">E-mail</td>
                 <td><a href="mailto:anna@derevenskie.pro">anna@derevenskie.pro</a></td>

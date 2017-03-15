@@ -66,13 +66,103 @@ export default {
     .icon-company:before { content: '\e80b'; } /* '' */
     .icon-tech:before { content: '\e80c'; } /* '' */
     .icon-tools:before { content: '\e80d'; } /* '' */
+    .icon-percent-1:before { content: '\e80e'; } /* '' */
     .icon-cow:before { content: '\e80f'; } /* '' */
     .icon-money:before { content: '\e810'; } /* '' */
     .icon-box:before { content: '\e811'; } /* '' */
     .icon-file-pdf:before { content: '\e812'; } /* '' */
     .icon-contacts:before { content: '\e813'; } /* '' */
+    .icon-loading:before { content: '\e830'; } /* '' */
+    .icon-facebook:before { content: '\f09a'; } /* '' */
     .icon-mobile:before { content: '\f10b'; } /* '' */
-    .icon-send:before { content: '\f1d8'; } /* '' */
+    .icon-youtube:before { content: '\f167'; } /* '' */
+    .icon-vkontakte:before { content: '\f189'; } /* '' */
+    .icon-odnoklassniki:before { content: '\f263'; } /* '' */
     .icon-percent:before { content: '\f295'; } /* '' */
     .icon-deal:before { content: '\f2b5'; } /* '' */
+
+    .animate-spin {
+      -moz-animation: spin 2s infinite linear;
+      -o-animation: spin 2s infinite linear;
+      -webkit-animation: spin 2s infinite linear;
+      animation: spin 2s infinite linear;
+      display: inline-block;
+    }
+    @-moz-keyframes spin {
+      0% {
+        -moz-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+
+      100% {
+        -moz-transform: rotate(359deg);
+        -o-transform: rotate(359deg);
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+      }
+    }
+    @-webkit-keyframes spin {
+      0% {
+        -moz-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+
+      100% {
+        -moz-transform: rotate(359deg);
+        -o-transform: rotate(359deg);
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+      }
+    }
+    @-o-keyframes spin {
+      0% {
+        -moz-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+
+      100% {
+        -moz-transform: rotate(359deg);
+        -o-transform: rotate(359deg);
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+      }
+    }
+    @-ms-keyframes spin {
+      0% {
+        -moz-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+
+      100% {
+        -moz-transform: rotate(359deg);
+        -o-transform: rotate(359deg);
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+      }
+    }
+    @keyframes spin {
+      0% {
+        -moz-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+
+      100% {
+        -moz-transform: rotate(359deg);
+        -o-transform: rotate(359deg);
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+      }
+    }
+
+
 </style>

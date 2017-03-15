@@ -5,11 +5,11 @@
 				<div class="modal-close" v-on:click="close"></div>
 				<slot name="title"><h1>&lt;h1&gt;Заголовок&lt;/h1&gt;</h1></slot>
 				<slot name="content">
-					<p>
+                    <p>
 						&lt;p class="modal-intro"&gt;Вступительный текст&lt;/p&gt;
 						&lt;p class="modal-content"&gt;Основное содержание&lt;/p&gt;
-					</p>
-				</slot>
+                    </p>
+                </slot>
 			</div>
 		</div>
 	</div>
@@ -36,19 +36,17 @@
 		$modal-close-color: $light-gray;
 		$modal-image-height: 135px;
 		$modal-image-width: $modal-image-height;
-
-		.modal-state {
-			display: none;
-		}
+        position: absolute;
+        z-index: 99999999999;
 
 		.modal-fade-screen {
 			@include position(fixed, 0);
 			background-color: rgba(#000, 0.85);
-			opacity: 0;
+			// opacity: 0;
 			padding-top: 0.6em;
 			text-align: left;
-			transition: opacity 0.25s ease;
-			visibility: hidden;
+			// transition: opacity 0.25s ease;
+			// visibility: hidden;
 			z-index: 99999999999;
 
 			@include media($large-screen) {
@@ -97,7 +95,7 @@
 			overflow: auto;
 			padding: $modal-padding / 2;
 			position: relative;
-			transition: opacity 0.25s ease;
+			// transition: opacity 0.25s ease;
 			width: 95%;
 
 			@include media($medium-screen) {
@@ -134,32 +132,32 @@
 
 		}
 
-		.modal-state:checked + .modal-fade-screen {
-			opacity: 1;
-			visibility: visible;
-		}
-		.modal-fade-screen {
-			opacity: 1;
-			visibility: visible;
-		}
+		// .modal-state:checked + .modal-fade-screen {
+		// 	opacity: 1;
+		// 	visibility: visible;
+		// }
+		// .modal-fade-screen {
+		// 	opacity: 1;
+		// 	visibility: visible;
+		// }
 
-		.modal-state:checked + .modal-fade-screen .modal-inner {
-			top: 0.5em;
-		}
+		// .modal-state:checked + .modal-fade-screen .modal-inner {
+		// 	top: 0.5em;
+		// }
 
-		.modal-fade-screen .modal-inner {
-			top: 0.5em;
-		}
+		// .modal-fade-screen .modal-inner {
+		// 	top: 0.5em;
+		// }
 	}
 
-	.modal-open {
-		overflow: hidden;
-	}
+	// .modal-open {
+	// 	overflow: hidden;
+	// }
 </style>
 
 <script>
 	export default {
-		props: [ 'modalId' ],
+        props: { form: String },
 		methods: {
 			close: function() {
 				window.Event.$emit('modal-hide')

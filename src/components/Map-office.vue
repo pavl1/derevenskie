@@ -9,29 +9,37 @@
             <span class="callback-button" @click="showModal()">Заказать звонок</span>
         </div>
 
-        <!-- FIXME: анимация появления и скрытия окна -->
-        <modal v-show="modal">
-            <h1 slot="title">Заказать обратный звонок</h1>
-            <div slot="content">
-                <p>Заполните форму и мы перезвоним Вам</p>
-                <form id="form" v-on:submit.prevent="sendCallback">
-                    <!-- FIXME: анимация правильного/неправльного значения (зеленая/красная окантовка у полей) -->
-                    <input
-                        type="text"
-                        class="callback-name"
-                        v-model="callback.name"
-                        placeholder="Имя" />
-                    <cleave
-                        type="text"
-                        class="callback-phone"
-                        v-model="callback.phone"
-                        v-bind:options="options.phone"
-                        placeholder="Телефон" />
-                    <input type="text" class="callback-captcha" v-model="callback.captcha" />
-                    <button type="button" class="callback-button" @click="sendCallback" :disabled="!error"> Позвоните мне</button>
-                </form>
-            </div>
-        </modal>
+        <transition name="modal">
+            <modal v-show="modal" :status="status">
+                <h1 slot="title">Заказать обратный звонок</h1>
+                <div slot="content">
+                    <p>Заполните форму и мы перезвоним Вам</p>
+                    <form id="form" v-on:submit.prevent="sendCallback">
+                        <!-- FIXME: анимация правильного/неправльного значения (зеленая/красная окантовка у полей) -->
+                        <input
+                            type="text"
+                            class="callback-name"
+                            v-model="callback.name"
+                            placeholder="Имя" />
+                        <cleave
+                            type="text"
+                            class="callback-phone"
+                            v-model="callback.phone"
+                            v-bind:options="options.phone"
+                            placeholder="Телефон" />
+                        <input type="text" class="callback-captcha" v-model="callback.captcha" />
+                        <button type="button" class="callback-button" @click="sendCallback" :disabled="!error"> Позвоните мне</button>
+                    </form>
+                    <!-- <div class="success" slot="success">
+                        Succes
+                    </div>
+                    <div class="error" slot="error">
+                        Error
+                    </div> -->
+                </div>
+
+            </modal>
+        </transition>
 
     </div>
 </template>
@@ -48,6 +56,7 @@
         data() {
             return {
                 modal: false,
+                status: 'form',
                 callback: {
                     name: '',
                     phone: '',
@@ -81,8 +90,8 @@
         },
         methods: {
             showModal() { this.modal = true },
-            hideModal() { this.modal = false },
-            sendCallback(token) {
+            hideModal() { this.modal = false; this.status = "form" },
+            sendCallback() {
                 Axios.post('/mail.php', {
                     name: this.callback.name,
                     phone: this.callback.phone,
@@ -94,6 +103,8 @@
                 .catch( (error) => {
                     console.log(error);
                 })
+                // FIXME: анимация
+                // console.log('succes')
             }
         }
     }
@@ -156,4 +167,13 @@
             display: none;
         }
     }
+
+    // Transitions
+    .modal-enter-active, .modal-leave-active {
+        transition: opacity .3s ease, z-index 0s;
+    }
+    .modal-enter, .modal-leave-to{
+        opacity: 0;
+    }
+
 </style>

@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import ga from 'vue-ga'
 
 Vue.use(Router)
 
@@ -33,8 +34,8 @@ import ContactsInvestor from 'pages/contacts/Investor'
 import ContactsLand from 'pages/contacts/Land'
 import ContactsOffice from 'pages/contacts/Office'
 // import ContactsClients from 'components/ContactsClients'
-
-export default new Router({
+//
+const router = new Router({
     routes: [
         {
             path: '/',
@@ -135,3 +136,7 @@ export default new Router({
         }
     ]
 })
+
+// FIXME: убрать комментарий при выгрузке на prodaction
+ga(router, 'UA-92969866-1')
+export default router
