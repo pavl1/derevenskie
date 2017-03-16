@@ -56,7 +56,7 @@ export default {
       /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
     }
 
-    .icon-phone:before { content: '\e800'; } /* '' */
+    .icon-phone:before { content: '\e801'; } /* '' */
     .icon-investor:before { content: '\e802'; } /* '' */
     .icon-market:before { content: '\e803'; } /* '' */
     .icon-logo:before { content: '\e806'; } /* '' */
@@ -66,21 +66,21 @@ export default {
     .icon-company:before { content: '\e80b'; } /* '' */
     .icon-tech:before { content: '\e80c'; } /* '' */
     .icon-tools:before { content: '\e80d'; } /* '' */
-    .icon-percent-1:before { content: '\e80e'; } /* '' */
+    .icon-percent:before { content: '\e80e'; } /* '' */
     .icon-cow:before { content: '\e80f'; } /* '' */
     .icon-money:before { content: '\e810'; } /* '' */
     .icon-box:before { content: '\e811'; } /* '' */
     .icon-file-pdf:before { content: '\e812'; } /* '' */
     .icon-contacts:before { content: '\e813'; } /* '' */
+    .icon-vkontakte:before { content: '\e819'; } /* '' */
     .icon-loading:before { content: '\e830'; } /* '' */
     .icon-facebook:before { content: '\f09a'; } /* '' */
     .icon-mobile:before { content: '\f10b'; } /* '' */
     .icon-youtube:before { content: '\f167'; } /* '' */
-    .icon-vkontakte:before { content: '\f189'; } /* '' */
+    .icon-paper-plane:before { content: '\f1d8'; } /* '' */
     .icon-odnoklassniki:before { content: '\f263'; } /* '' */
-    .icon-percent:before { content: '\f295'; } /* '' */
     .icon-deal:before { content: '\f2b5'; } /* '' */
-
+    
     .animate-spin {
       -moz-animation: spin 2s infinite linear;
       -o-animation: spin 2s infinite linear;

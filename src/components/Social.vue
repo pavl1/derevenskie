@@ -70,7 +70,7 @@ export default {
             &:hover { color: #fff; background-color: $color; border-color: scale-color($color, $lightness: 20%) }
         }
         &-youtube {
-            $color: #f00028;
+            $color: #e62117;
             &:hover { color: #fff; background-color: $color; border-color: scale-color($color, $lightness: 20%) }
         }
     }

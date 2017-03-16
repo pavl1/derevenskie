@@ -14,7 +14,7 @@
 	        	"https://sms.ru/sms/send?api_id=" . self::$api_id .
 	        	"&from=" . self::$phone .
 	        	"&to=" . self::$phone .
-	        	"&text=" . urlencode($text)
+	        	"&text=" . urlencode($text) .
 	        );
         }
     }

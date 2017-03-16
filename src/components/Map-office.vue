@@ -10,32 +10,45 @@
         </div>
 
         <transition name="modal">
-            <modal v-show="modal" :status="status">
-                <h1 slot="title">Заказать обратный звонок</h1>
-                <div slot="content">
-                    <p>Заполните форму и мы перезвоним Вам</p>
-                    <form id="form" v-on:submit.prevent="sendCallback">
-                        <!-- FIXME: анимация правильного/неправльного значения (зеленая/красная окантовка у полей) -->
-                        <input
-                            type="text"
-                            class="callback-name"
-                            v-model="callback.name"
-                            placeholder="Имя" />
-                        <cleave
-                            type="text"
-                            class="callback-phone"
-                            v-model="callback.phone"
-                            v-bind:options="options.phone"
-                            placeholder="Телефон" />
-                        <input type="text" class="callback-captcha" v-model="callback.captcha" />
-                        <button type="button" class="callback-button" @click="sendCallback" :disabled="!error"> Позвоните мне</button>
-                    </form>
-                    <!-- <div class="success" slot="success">
-                        Succes
-                    </div>
-                    <div class="error" slot="error">
-                        Error
-                    </div> -->
+            <modal v-show="modal">
+                <h1 slot="title">
+                    <transition name="send" mode="out-in">
+                        <span v-if="status == 'form'" key="form">Заказать обратный звонок</span>
+                        <span v-else-if="status == 'success'" key="success">Спасибо за обращение</span>
+                        <span v-else-if="status == 'error'" key="success">Ошибка</span>
+                    </transition>
+                
+                </h1>
+                <div class="wrapper" slot="content">
+                    <transition name="send" mode="out-in" tag="div">
+                        <div v-if="status == 'form'" class="form" key="form">
+                            <p>Заполните форму и мы перезвоним Вам</p>
+                            <form id="form" v-on:submit.prevent="sendCallback">
+                                <!-- FIXME: анимация правильного/неправльного значения (зеленая/красная окантовка у полей) -->
+                                <input
+                                    type="text"
+                                    class="callback-name"
+                                    v-model="callback.name"
+                                    placeholder="Имя" />
+                                <cleave
+                                    maxlength="15"
+                                    type="text"
+                                    class="callback-phone"
+                                    v-model="callback.phone"
+                                    v-bind:options="options.phone"
+                                    placeholder="Телефон" />
+                                <input type="text" class="callback-captcha" v-model="callback.captcha" />
+                                <button type="button" class="callback-button" @click="sendCallback" :disabled="!error"><icon v-show="loading" name="loading" class="animate-spin callback-loading" /> Позвоните мне</button>
+                            </form>
+                        </div>
+                        <div v-else-if="status == 'success'" class="success" key="success">
+                            <p>В ближайшее время менеджер позвонит Вам по номеру {{ callback.phone }}</p>
+                        </div>
+                        <div v-else-if="status == 'error'" class="error" key="error">
+                            <p>В процессе отправки запроса произошла ошибка, попробуйте отправить ещё раз</p>
+                            <button type="button" class="callback-button" @click="sendCallback"><icon v-show="loading" name="loading" class="animate-spin callback-loading" /> Повторить попытку</button>
+                        </div>
+                    </transition>
                 </div>
 
             </modal>
@@ -57,6 +70,7 @@
             return {
                 modal: false,
                 status: 'form',
+                loading: false,
                 callback: {
                     name: '',
                     phone: '',
@@ -72,7 +86,7 @@
         },
         computed: {
             error() {
-                return (this.callback.name.length > 3) && ( this.callback.phone.length > 12)
+                return (this.callback.name.length > 3) && ( this.callback.phone.length >= 15)
             }
         },
         mounted() {
@@ -89,22 +103,24 @@
             window.Event.$on('modal-hide', () => { this.hideModal() })
         },
         methods: {
-            showModal() { this.modal = true },
+            showModal() { this.modal = true; this.loading = false },
             hideModal() { this.modal = false; this.status = "form" },
+            
             sendCallback() {
+                this.loading = true
                 Axios.post('/mail.php', {
                     name: this.callback.name,
                     phone: this.callback.phone,
                     captcha: this.callback.captcha
                 })
                 .then( (response) => {
-                    console.log(response);
+                    if (response.data.slice(0,3) == 100) this.status = 'success'
+                    else this.status = 'error'
                 })
                 .catch( (error) => {
-                    console.log(error);
+                    this.loading = false
+                    this.status = 'error'
                 })
-                // FIXME: анимация
-                // console.log('succes')
             }
         }
     }
@@ -142,9 +158,9 @@
 
         &-button {
             display: block;
+            position: relative;
             margin: 1rem auto 0;
-            padding: 1rem 2rem;
-            width: 20rem;
+            padding: 1rem 4rem;
             background: $green;
             font-size: 1.6rem;
             color: #fff;
@@ -166,6 +182,15 @@
         &-captcha {
             display: none;
         }
+
+        &-loading {
+            position: absolute;
+            left: 1rem;
+        }
+    }
+
+    .wrapper {
+        min-height: 112px;
     }
 
     // Transitions
@@ -174,6 +199,21 @@
     }
     .modal-enter, .modal-leave-to{
         opacity: 0;
+    }
+
+    .send-enter-active, .send-leave-active {
+        transition: opacity .15s ease, transform .3s ease;
+    }
+    .send-enter, .send-leave-to /* .fade-leave-active in <2.1.8 */ {
+        opacity: 0;
+    }
+
+    .send-enter {
+        transform: translateY(10px);
+    }
+
+    .send-leave-to {
+        transform: translateY(-10px);
     }
 
 </style>
